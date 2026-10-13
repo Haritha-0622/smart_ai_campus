@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-navy: #101A33;
+    --color-indigo: #635BFF;
+    --color-teal: #16B8A6;
+    --color-bg: #F7F9FC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-text-main: #0F172A;
+    --color-text-muted: #64748B;
+  }
+
+  .dark {
+    --color-navy: #0A0F1D;
+    --color-indigo: #7873FF;
+    --color-teal: #2DD4BF;
+    --color-bg: #0B1120;
+    --color-card: #131B2E;
+    --color-border: #1E293B;
+    --color-text-main: #F8FAFC;
+    --color-text-muted: #94A3B8;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar for dense tables and sidebar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Premium shadows & subtle border transitions */
+.sac-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(16, 26, 51, 0.04), 0 1px 2px -1px rgba(16, 26, 51, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sac-card:hover {
+  box-shadow: 0 4px 12px 0 rgba(16, 26, 51, 0.07), 0 2px 4px -1px rgba(16, 26, 51, 0.04);
+}
+
+.sac-card-static {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(16, 26, 51, 0.04);
+}
+
+/* Badge pill */
+.badge-indigo {
+  background-color: rgba(99, 91, 255, 0.1);
+  color: #635BFF;
+  border: 1px solid rgba(99, 91, 255, 0.2);
+}
+.badge-teal {
+  background-color: rgba(22, 184, 166, 0.1);
+  color: #0D9488;
+  border: 1px solid rgba(22, 184, 166, 0.2);
+}
+.badge-amber {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.badge-rose {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #DC2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
