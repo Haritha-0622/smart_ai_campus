@@ -279,3 +279,112 @@ export interface NotificationItem {
   read: boolean
   link?: string
 }
+
+// 2.5 Staff Dashboard Specialized Interfaces
+export interface OnboardingTaskItem {
+  id: string
+  title: string
+  completed: boolean
+  dueDate: string
+  category: 'IT Setup' | 'HR Formalities' | 'Academic Orientation' | 'Campus Security'
+}
+
+export interface CandidatePerson {
+  id: string
+  name: string
+  email: string
+  phone: string
+  roleApplied: string
+  department: string
+  experienceYears: number
+  priority: 'Expedited' | 'High' | 'Normal'
+  stage: 'Shortlisted' | 'Interview Scheduled' | 'Panel Technical' | 'Management Review' | 'Offer Extended' | 'Onboarding Active'
+  interviewDate?: string
+  interviewTime?: string
+  interviewPanel?: string[]
+  interviewRating?: number
+  expectedJoiningDate: string
+  status: 'Active' | 'Hired' | 'Rejected' | 'On Hold'
+  onboardingTasks: OnboardingTaskItem[]
+  notes?: string
+}
+
+export interface StaffDocumentRecord {
+  id: string
+  type: 'Aadhaar / National ID' | 'Academic Degree & Transcripts' | 'Police Clearance / Child Safety' | 'Relieving & Experience Cert' | 'PAN & Salary Mandate' | 'Signed Appointment Order'
+  status: 'Verified' | 'Pending Review' | 'Rejected' | 'Missing'
+  fileName?: string
+  fileSize?: string
+  uploadDate?: string
+  verifiedBy?: string
+  verifiedAt?: string
+  remarks?: string
+}
+
+export interface StaffDossier {
+  id: string
+  staffId: string
+  staffName: string
+  department: string
+  empNo: string
+  designation: string
+  complianceScore: number
+  documents: StaffDocumentRecord[]
+}
+
+export interface InductionAttendee {
+  staffId: string
+  staffName: string
+  department: string
+  role: string
+  attended: boolean
+  signedOffAt?: string
+}
+
+export interface InductionSession {
+  id: string
+  code: string
+  title: string
+  date: string
+  time: string
+  venue: string
+  facilitator: string
+  targetCohort: string
+  description: string
+  status: 'Upcoming' | 'In Progress' | 'Completed'
+  attendees: InductionAttendee[]
+}
+
+export interface StaffTrainingRecord {
+  id: string
+  moduleCode: string
+  title: string
+  category: 'Mandatory Child Protection (POCSO)' | 'AI & Pedagogy' | 'Lab & Fire Safety' | 'NEP 2020 Accreditation' | 'Data Privacy'
+  assignedToStaffId: string
+  staffName: string
+  department: string
+  progress: number // 0 - 100
+  dueDate: string
+  status: 'Not Started' | 'In Progress' | 'Certified' | 'Overdue'
+  certifiedAt?: string
+  score?: number
+}
+
+export interface InstitutionalHrTask {
+  id: string
+  taskNumber: string
+  type: 'Probation Confirmation' | 'IT & Asset Allocation' | 'Salary Revision / Grade Pay' | 'Maternity / Sabbatical Leave' | 'Research Publication Grant'
+  staffId: string
+  staffName: string
+  department: string
+  designation: string
+  priority: 'Urgent' | 'High' | 'Normal'
+  submittedDate: string
+  slaDeadline: string
+  status: 'Pending HR Review' | 'Approved' | 'Rejected' | 'Escalated to Director'
+  requestedDetails: string
+  actionRemarks?: string
+  reviewedBy?: string
+  reviewedAt?: string
+}
+
